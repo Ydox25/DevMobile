@@ -11,7 +11,7 @@ class GameViewModel extends ChangeNotifier {
     easyMap.generateMap();
     notifyListeners();
   }
-
+/*
   void click(CaseModel a){
     if(!a.hasFlag){
       easyMap.reveal(a);
@@ -68,5 +68,7 @@ class GameViewModel extends ChangeNotifier {
     }
     notifyListeners();
   }
+  */
+
 
 }
