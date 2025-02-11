@@ -8,7 +8,7 @@ class MapModel {
   int nbBomb = 0;
   List<List<CaseModel>> _cases = List<List<CaseModel>>.empty();
 
-  MapModel(this.nbLine, this.nbCol, this.nbBomb, this._cases);
+  MapModel(this.nbLine, this.nbCol, this.nbBomb);
 
 
 
