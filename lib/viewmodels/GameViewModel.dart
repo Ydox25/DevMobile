@@ -70,5 +70,60 @@ class GameViewModel extends ChangeNotifier {
   }
   */
 
+  void click(int x, int y){
+    if(easyMap.cases[x][y].hasFlag){
+      easyMap.reveal(x,y);
+      if(easyMap.cases[x][y].hasBomb){
+        easyMap.explode(x,y);
+        easyMap.revealAll();
+      }
+    }
+    notifyListeners();
+  }
+
+  void onLongPress(int x, int y){
+    easyMap.toggleFlag(x,y);
+    notifyListeners();
+  }
+
+  Image getIcon(int x ,int y){
+    int? condition;
+    if (easyMap.cases[x][y].hasFlag){
+      condition = 9;
+    } else if (easyMap.cases[x][y].hasBomb){
+      condition = 10;
+    } else if (easyMap.cases[x][y].hasExploded) {
+      condition = 11;
+    } else {
+      condition = easyMap.cases[x][y].number;
+    }
+
+    switch (condition) {
+      case 1:
+        return Image.asset('assets/i1.png', height: 40);
+      case 2:
+        return Image.asset('assets/i2.png', height: 40);
+      case 3:
+        return Image.asset('assets/i3.png', height: 40);
+      case 4:
+        return Image.asset('assets/i4.png', height: 40);
+      case 5:
+        return Image.asset('assets/i5.png', height: 40);
+      case 6:
+        return Image.asset('assets/i6.png', height: 40);
+      case 7:
+        return Image.asset('assets/i7.png', height: 40);
+      case 8:
+        return Image.asset('assets/i8.png', height: 40);
+      case 9:
+        return Image.asset('assets/flag.png', height: 40);
+      case 10:
+        return Image.asset('assets/bomb2.png', height: 40);
+      case 11:
+        return Image.asset('assets/explode.jpg', height: 40);
+      default:
+        return Image.asset('path/img_default', height: 40);
+    }
+  }
 
 }

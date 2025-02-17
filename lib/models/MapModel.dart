@@ -72,8 +72,8 @@ class MapModel {
   }
 
 
-  void reveal(CaseModel a){
-    a.hidden = false;
+  void reveal(int x, int y){
+    _cases[x][y].hidden = false;
   }
 
   void revealAll(){
@@ -84,17 +84,17 @@ class MapModel {
     }
   }
 
-  void explode(CaseModel a){
-    a.hasExploded = true;
+  void explode(int x, int y){
+    _cases[x][y].hasExploded = true;
   }
 
-  void toggleFlag(CaseModel a){
-    if (a.hasFlag){
-      a.hasFlag = false;
+  void toggleFlag(int x, int y){
+    if (_cases[x][y].hasFlag){
+      _cases[x][y].hasFlag = false;
     } else {
-      a.hasFlag = true;
+      _cases[x][y].hasFlag = true;
     }
   }
 
-
+  List<List<CaseModel>> get cases => _cases;
 }
